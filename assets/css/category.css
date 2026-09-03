@@ -1,0 +1,654 @@
+/* ==========================================================================
+   CATEGORY & TOUR PAGE STYLES - TRAVEL AGENCY
+   Exact visual match for modern overlapping category cards
+   ========================================================================== */
+
+:root {
+  --cat-gold: #FFAA0D;
+  --cat-gold-dark: #c58100;
+  --cat-navy: #1f4973;
+  --cat-dark-navy: #0b2540;
+  --cat-teal: #00829B;
+  --cat-teal-light: #e5f4f7;
+  --cat-surface: #faf7f2;
+  --cat-card-bg: #fffefb;
+  --cat-border: rgba(226, 218, 203, 0.45);
+  --cat-shadow: 0 10px 30px rgba(15, 23, 42, 0.07);
+  --cat-shadow-hover: 0 18px 40px rgba(15, 23, 42, 0.14);
+  --cat-radius-img: 22px;
+  --cat-radius-box: 18px;
+}
+
+
+.category-explorer {
+  padding: 30px 0 30px;
+  background: #faf7f2;
+}
+
+.category-explorer__header {
+  margin-bottom: 45px;
+}
+
+.category-explorer__header-text {
+  text-align: center;
+  max-width: 750px;
+  margin: 0 auto 35px;
+}
+
+.section-tag-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 16px;
+  border-radius: 50px;
+  background: rgba(255, 170, 13, 0.12);
+  color: #c58100;
+  font-weight: 700;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 12px;
+}
+
+.category-explorer__header h2 {
+  font-family: var(--cormorant);
+  font-size: clamp(2.1rem, 4vw, 3rem);
+  font-weight: 700;
+  color: #121d28;
+  margin-bottom: 14px;
+}
+
+.category-explorer__header p {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: #64748b;
+}
+
+/* Filter Nav Buttons */
+.category-filter-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 6px;
+  background: rgba(31, 73, 115, 0.06);
+  border-radius: 50px;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.category-filter-btn {
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 10px 22px;
+  border-radius: 40px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--cat-navy);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.category-filter-btn .badge-count {
+  background: rgba(31, 73, 115, 0.1);
+  color: var(--cat-navy);
+  font-size: 0.72rem;
+  padding: 2px 7px;
+  border-radius: 12px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.category-filter-btn:hover {
+  background: rgba(31, 73, 115, 0.08);
+  color: var(--cat-dark-navy);
+}
+
+.category-filter-btn.active {
+  background: var(--cat-navy);
+  color: #ffffff;
+  box-shadow: 0 6px 18px rgba(31, 73, 115, 0.25);
+}
+
+.category-filter-btn.active .badge-count {
+  background: var(--cat-gold);
+  color: var(--cat-dark-navy);
+}
+
+/* --------------------------------------------------------------------------
+   PREMIUM CATEGORY CARDS — UNIQUE DESIGN
+   Overlapping layout inspired by reference, but with distinct visual identity:
+   • Gradient accent top-edge on content box
+   • Teal icon circle badge (not plain pill)
+   • Decorative divider + subtle numbering
+   • Pill-button CTA instead of plain text link
+   -------------------------------------------------------------------------- */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 42px 30px;
+  margin-top: 40px;
+}
+
+.cat-card-modern {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), filter 0.3s ease;
+  filter: drop-shadow(0 6px 18px rgba(15, 23, 42, 0.06));
+}
+
+.cat-card-modern:hover {
+  transform: translateY(-8px);
+  filter: drop-shadow(0 16px 36px rgba(15, 23, 42, 0.13));
+}
+
+/* ---- Card Top Image ---- */
+.cat-card-modern__image-wrap {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  border-radius: 24px 24px 24px 4px;
+  overflow: hidden;
+  background-color: #e2ded7;
+}
+
+.cat-card-modern__image-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+      transparent 40%,
+      rgba(11, 37, 64, 0.35) 100%);
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.35s ease;
+}
+
+.cat-card-modern:hover .cat-card-modern__image-wrap::after {
+  opacity: 0.7;
+}
+
+.cat-card-modern__image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.65s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.cat-card-modern:hover .cat-card-modern__image-wrap img {
+  transform: scale(1.08);
+}
+
+/* ---- Location Badge — teal circle icon + text ---- */
+.cat-card-modern__loc {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(0, 130, 155, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 7px 14px 7px 10px;
+  border-radius: 30px;
+  box-shadow: 0 4px 14px rgba(0, 130, 155, 0.35);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cat-card-modern:hover .cat-card-modern__loc {
+  background: rgba(31, 73, 115, 0.95);
+  box-shadow: 0 6px 18px rgba(31, 73, 115, 0.35);
+}
+
+.cat-card-modern__loc i {
+  font-size: 0.68rem;
+  color: var(--cat-gold);
+}
+
+/* ---- Floating Content Box with Gradient Accent ---- */
+.cat-card-modern__content {
+  position: relative;
+  z-index: 3;
+  margin: -55px 14px 0 14px;
+  background: #ffffff;
+  border-radius: 4px 20px 20px 20px;
+  padding: 28px 24px 22px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.07);
+  border: 1px solid rgba(226, 218, 203, 0.35);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+/* Gradient accent bar at the top of content */
+.cat-card-modern__content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cat-teal) 0%, var(--cat-gold) 50%, var(--cat-navy) 100%);
+  border-radius: 4px 20px 0 0;
+  opacity: 0.85;
+  transition: opacity 0.3s ease, height 0.3s ease;
+}
+
+.cat-card-modern:hover .cat-card-modern__content::before {
+  opacity: 1;
+  height: 5px;
+}
+
+.cat-card-modern:hover .cat-card-modern__content {
+  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.13);
+  border-color: rgba(0, 130, 155, 0.3);
+}
+
+/* ---- Watermark Number — with decorative line ---- */
+.cat-card-modern__watermark {
+  position: absolute;
+  bottom: 18px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.cat-card-modern__watermark::before {
+  content: '';
+  width: 22px;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, rgba(0, 130, 155, 0.25));
+  border-radius: 2px;
+}
+
+.cat-card-modern__watermark {
+  font-family: var(--cormorant);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: rgba(0, 130, 155, 0.15);
+  line-height: 1;
+}
+
+/* ---- Title ---- */
+.cat-card-modern__title {
+  font-family: var(--cormorant);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #111a24;
+  line-height: 1.3;
+  margin-bottom: 10px;
+  padding-right: 40px;
+  transition: color 0.3s ease;
+}
+
+.cat-card-modern:hover .cat-card-modern__title {
+  color: var(--cat-teal);
+}
+
+/* ---- Description ---- */
+.cat-card-modern__desc {
+  font-size: 0.87rem;
+  line-height: 1.6;
+  color: #64748b;
+  margin-bottom: 20px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 44px;
+}
+
+/* ---- CTA — Pill Button Style (not plain text) ---- */
+.cat-card-modern__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--cat-navy) 0%, var(--cat-teal) 100%);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 9px 20px;
+  border-radius: 30px;
+  margin-top: auto;
+  width: fit-content;
+  box-shadow: 0 4px 14px rgba(0, 130, 155, 0.2);
+  transition: all 0.35s ease;
+}
+
+.cat-card-modern__link i {
+  font-size: 0.72rem;
+  transition: transform 0.3s ease;
+}
+
+.cat-card-modern:hover .cat-card-modern__link {
+  background: linear-gradient(135deg, var(--cat-gold) 0%, var(--cat-gold-dark) 100%);
+  color: var(--cat-dark-navy);
+  box-shadow: 0 6px 20px rgba(255, 170, 13, 0.35);
+}
+
+.cat-card-modern:hover .cat-card-modern__link i {
+  transform: translateX(4px);
+}
+
+/* No results state */
+.cat-no-results {
+  text-align: center;
+  padding: 60px 20px;
+  background: #ffffff;
+  border-radius: var(--cat-radius-box);
+  border: 1px dashed rgba(31, 73, 115, 0.2);
+  margin-top: 30px;
+}
+
+.cat-no-results__icon {
+  width: 70px;
+  height: 70px;
+  background: var(--cat-teal-light);
+  color: var(--cat-teal);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  margin: 0 auto 18px;
+}
+
+.cat-no-results h3 {
+  font-family: var(--cormorant);
+  font-size: 1.8rem;
+  color: var(--cat-dark-navy);
+  margin-bottom: 8px;
+}
+
+.cat-no-results p {
+  color: #687983;
+  margin-bottom: 20px;
+}
+
+.cat-no-results__btn {
+  background: var(--cat-navy);
+  color: #ffffff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+}
+
+.cat-no-results__btn:hover {
+  background: var(--cat-gold);
+  color: var(--cat-dark-navy);
+}
+
+/* --------------------------------------------------------------------------
+   WHY BOOK WITH US TRUST PILLARS
+   -------------------------------------------------------------------------- */
+.cat-why-us {
+  padding: 70px 0;
+  background: #ffffff;
+  border-top: 1px solid rgba(226, 218, 203, 0.4);
+  border-bottom: 1px solid rgba(226, 218, 203, 0.4);
+}
+
+.cat-why-us__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.cat-why-us__card {
+  padding: 28px 24px;
+  border-radius: 18px;
+  background: #faf7f2;
+  border: 1px solid rgba(31, 73, 115, 0.08);
+  transition: all 0.35s ease;
+  position: relative;
+}
+
+.cat-why-us__card:hover {
+  transform: translateY(-5px);
+  background: #ffffff;
+  border-color: rgba(255, 170, 13, 0.4);
+  box-shadow: 0 14px 35px rgba(11, 37, 64, 0.08);
+}
+
+.cat-why-us__icon {
+  width: 52px;
+  height: 52px;
+  background: var(--cat-navy);
+  color: var(--cat-gold);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  margin-bottom: 18px;
+  transition: all 0.3s ease;
+}
+
+.cat-why-us__card:hover .cat-why-us__icon {
+  background: var(--cat-gold);
+  color: var(--cat-dark-navy);
+}
+
+.cat-why-us__card h4 {
+  font-family: var(--cormorant);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--cat-dark-navy);
+  margin-bottom: 10px;
+}
+
+.cat-why-us__card p {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: #63747d;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   BESPOKE CUSTOM TRIP CTA BANNER
+   -------------------------------------------------------------------------- */
+.cat-cta-banner {
+  padding: 80px 0;
+  background: linear-gradient(180deg, #faf7f2 0%, #ede7dd 100%);
+}
+
+.cat-cta-banner__inner {
+  position: relative;
+  background: linear-gradient(135deg, #0b2540 0%, #173d63 60%, #1f4973 100%);
+  border-radius: 28px;
+  padding: 55px 50px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(11, 37, 64, 0.22);
+  border: 1px solid rgba(255, 170, 13, 0.3);
+}
+
+.cat-cta-banner__bg-glow {
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 170, 13, 0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cat-cta-banner__content {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+}
+
+.cat-cta-banner__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 14px;
+  border-radius: 30px;
+  background: rgba(255, 170, 13, 0.18);
+  border: 1px solid rgba(255, 170, 13, 0.45);
+  color: #ffc453;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+.cat-cta-banner h2 {
+  font-family: var(--cormorant);
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  color: #ffffff;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 14px;
+}
+
+.cat-cta-banner p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  margin-bottom: 30px;
+}
+
+.cat-cta-banner__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.cat-cta-banner__btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--cat-gold);
+  color: var(--cat-dark-navy);
+  padding: 14px 28px;
+  border-radius: 40px;
+  font-size: 0.96rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(255, 170, 13, 0.35);
+  transition: all 0.3s ease;
+}
+
+.cat-cta-banner__btn-primary:hover {
+  background: #ffffff;
+  color: var(--cat-dark-navy);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(255, 255, 255, 0.25);
+}
+
+.cat-cta-banner__btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(37, 211, 102, 0.15);
+  border: 1px solid rgba(37, 211, 102, 0.5);
+  color: #25d366;
+  padding: 14px 26px;
+  border-radius: 40px;
+  font-size: 0.96rem;
+  font-weight: 600;
+  text-decoration: none;
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.cat-cta-banner__btn-whatsapp:hover {
+  background: #25d366;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.cat-cta-banner__btn-whatsapp i {
+  font-size: 1.2rem;
+}
+
+@media (min-width: 992px) {
+  .hero-nav-wrap {
+    margin-top: 11px;
+    margin-bottom: 10px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE MEDIA QUERIES
+   -------------------------------------------------------------------------- */
+@media (max-width: 1200px) {
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cat-why-us__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .cat-hero-section {
+    padding: 120px 0 50px;
+    min-height: auto;
+  }
+
+  .cat-cta-banner__inner {
+    padding: 40px 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .category-grid {
+    grid-template-columns: 1fr;
+    gap: 35px 20px;
+  }
+
+  .cat-why-us__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cat-hero-stats {
+    gap: 14px;
+    padding: 14px 18px;
+  }
+
+  .cat-hero-stat-divider {
+    display: none;
+  }
+
+  .cat-cta-banner__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cat-cta-banner__btn-primary,
+  .cat-cta-banner__btn-whatsapp {
+    justify-content: center;
+  }
+}
